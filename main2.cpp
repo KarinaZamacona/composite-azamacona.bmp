@@ -21,7 +21,7 @@ int main()
         Bitmap avgImage;
         int i = 0;
         int inVector;
-        invector=0;
+        inVector=0;
         cout << "Upload a file in the format bmp or select <DONE> if desired images have been selected" << endl;
         while(i<10)
         {
@@ -56,38 +56,40 @@ int main()
                 return 0;
         }
         vector < vector <Pixel> >bmp;
-        vector <string> imageFiles;
+        vector <string> images;
         vector < vector < int > > all;
         vector < int > temp;
-        Pixel bmp;
-        for (int i=0; i < imageFiles.size() ; i++)
+        Pixel bmp1;
+        for (int i=0; i < images.size() ; i++)
         {
-                bmp=image[i].toPixelMatrix;
+                bmp1=images[i].toPixelMatrix;
                 temp=Avg(bmp);
                 all.push_back(temp);
-                cout<<"File "<<i+1<<" of "<<imageFiles.size()<<" is done."<<endl;
+                cout<<"File "<<i+1<<" of "<<images.size()<<" is done."<<endl;
         }
         int columnSum;
         for(int row=0; row<all.size();row++)
         {
+        int total;
                 for(int column=0; column<all[0].size(); column++)
                 {
-                        columnSum=columbSum + all[row][column]
+                        columnSum=columnSum + all[row][column];
                 }
                 total.push_back( columnSum/all.size() );
         }
-        bmp=imageFiles[0].toPixelMatrix();
+        bmp1=images[0].toPixelMatrix();
         int counter=0;
         
-        for(int j=0; j<bmp.size();j++)
+        for(int j=0; j<bmp1.size();j++)
         {
-        for(int k=0; k<bmp[0].size(); c++)
+        for(int k=0; k<bmp1[0].size(); k++)
         {
-        rgb=bmp[j][k];
+        string rgb;
+        rgb=bmp1[j][k];
         rgb.red=total[counter];
         rgb.blue=total[counter];
         rgb.green=total[counter];
-        bmp[j][k]=rgb;
+        bmp1[j][k]=rgb;
         counter++;
         }
         }
@@ -122,7 +124,7 @@ bool validDimensions(Bitmap image1, Bitmap image2)
         return true;
 }
 
-vector<int> Avg (vector <vector <pixel> >all)
+vector<int> Avg (vector < vector <pixel> > all)
 {
         Pixel rgb;
         vector<int>columnSum;
@@ -137,4 +139,4 @@ vector<int> Avg (vector <vector <pixel> >all)
                 columnSum.push_back( total/all.size() )
         }
         return columnSum;
-
+}
